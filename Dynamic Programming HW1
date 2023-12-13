@@ -15,7 +15,7 @@ max_sequence = [list(key) for key, value in sequence.items() if value == max_len
 
 print(sequence)
 print(max_length)
-print('最长的递增序列：', end='')
+print('The longest increasing sequence：', end='')
 
 for i in max_sequence:
     if i == max_sequence[-1]:
