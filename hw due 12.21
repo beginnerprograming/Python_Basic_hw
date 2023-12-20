@@ -1,0 +1,16 @@
+import xlrd
+import openpyxl
+
+book_xls = xlrd.open_workbook('H1.xls')
+
+book_xlsx = openpyxl.Workbook()
+
+for sheet_name in book_xls.sheet_names():
+    sheet_xls = book_xls.sheet_by_name(sheet_name)
+    sheet_xlsx = book_xlsx.create_sheet(sheet_name)
+    for row in range(sheet_xls.nrows):
+        for col in range(sheet_xls.ncols):
+            value = sheet_xls.cell_value(row, col)
+            sheet_xlsx.cell(row=row+1, column=col+1).value = value
+
+book_xlsx.save('New_H1.xlsx')
