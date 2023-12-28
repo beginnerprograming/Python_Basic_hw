@@ -1,0 +1,21 @@
+# import the PyPDF2 module
+import PyPDF2
+
+# create a PdfFileWriter object to store the output
+output = PyPDF2.PdfFileWriter()
+
+# loop through the files in the "mypdfs" folder
+for file in os.listdir("mypdfs"):
+    # check if the file is a pdf
+    if file.endswith(".pdf"):
+        # open the file as a PdfFileReader object
+        input = PyPDF2.PdfFileReader(open("mypdfs/" + file, "rb"))
+        # get the first page of the file
+        page = input.getPage(0)
+        # add the page to the output
+        output.addPage(page)
+
+# open a new file named "new.pdf" as a binary file
+with open("new.pdf", "wb") as new_file:
+    # write the output to the new file
+    output.write(new_file）
